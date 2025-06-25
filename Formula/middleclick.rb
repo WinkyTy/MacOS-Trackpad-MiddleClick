@@ -2,6 +2,7 @@ class Middleclick < Formula
   desc "macOS app that converts three-finger trackpad clicks to middle clicks"
   homepage "https://github.com/WinkyTy/MacOS-Trackpad-MiddleClick"
   url "https://github.com/WinkyTy/MacOS-Trackpad-MiddleClick/archive/refs/heads/main.tar.gz"
+  sha256 "2b07d2327cfbb64d59587f0b993614dc79b56ce83b5e055e4396f0ebcff253b0"
   version "1.0.0"
   license "MIT"
   head "https://github.com/WinkyTy/MacOS-Trackpad-MiddleClick.git", branch: "main"
