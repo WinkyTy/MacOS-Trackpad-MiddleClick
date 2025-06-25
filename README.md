@@ -3,7 +3,6 @@
 A macOS app that converts three-finger trackpad clicks to middle clicks, perfect for closing browser tabs and other middle-click actions.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/WinkyTy/MacOS-Trackpad-MiddleClick.git)
-[![Homebrew](https://img.shields.io/badge/Homebrew-Install-green.svg)](https://formulae.brew.sh/formula/middleclick)
 
 ## Features
 
@@ -24,17 +23,7 @@ A macOS app that converts three-finger trackpad clicks to middle clicks, perfect
 
 ### Option 1: Homebrew (Recommended)
 
-The easiest way to install MiddleClick is using Homebrew:
-
-```bash
-# Add the tap (if using a custom tap)
-brew tap WinkyTy/middleclick
-
-# Install MiddleClick
-brew install middleclick
-```
-
-**Note**: If you haven't set up a Homebrew tap yet, you can install directly from the repository:
+Install directly from the repository using Homebrew:
 
 ```bash
 brew install --build-from-source https://raw.githubusercontent.com/WinkyTy/MacOS-Trackpad-MiddleClick/main/Formula/middleclick.rb
@@ -212,12 +201,12 @@ The app appears as a grid icon in your menu bar:
 3. **Reinstall:**
    ```bash
    brew uninstall middleclick
-   brew install middleclick
+   brew install --build-from-source https://raw.githubusercontent.com/WinkyTy/MacOS-Trackpad-MiddleClick/main/Formula/middleclick.rb
    ```
 
 4. **Install with Verbose Output:**
    ```bash
-   brew install --build-from-source --verbose Formula/middleclick.rb
+   brew install --build-from-source --verbose https://raw.githubusercontent.com/WinkyTy/MacOS-Trackpad-MiddleClick/main/Formula/middleclick.rb
    ```
 
 ## Development
@@ -231,7 +220,8 @@ MiddleClick/
 │   ├── StatusBarController.swift # Menu bar interface
 │   ├── TrackpadHandler.swift     # Gesture detection
 │   ├── ContentView.swift         # Unused (background app)
-│   └── Info.plist               # App configuration
+│   ├── Info.plist               # App configuration
+│   └── Assets.xcassets/         # App assets
 ├── MiddleClickTests/            # Unit tests
 ├── MiddleClickUITests/          # UI tests
 ├── Formula/                     # Homebrew formula
@@ -262,22 +252,16 @@ MiddleClick/
    - Drag the app to the disk image
    - Eject and distribute
 
-### Setting Up Homebrew Distribution
+### Creating Releases
 
-1. **Create a Homebrew Tap:**
-   - Create a new repository named `homebrew-tap`
-   - Add the formula from `Formula/middleclick.rb`
-   - Users can install with: `brew tap yourusername/tap && brew install middleclick`
-
-2. **Submit to Homebrew Core:**
-   - Fork the homebrew-core repository
-   - Add your formula to `Formula/middleclick.rb`
-   - Submit a pull request
-
-3. **Create a Release:**
+1. **Create a Release:**
    ```bash
    ./scripts/create-release.sh 1.0.0 "Initial release"
    ```
+
+2. **Update Formula** (if needed):
+   - The formula will be automatically updated with the correct SHA256
+   - Commit and push the changes
 
 ### Contributing
 
