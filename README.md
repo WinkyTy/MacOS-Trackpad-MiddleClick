@@ -3,6 +3,7 @@
 A macOS app that converts three-finger trackpad clicks to middle clicks, perfect for closing browser tabs and other middle-click actions.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/WinkyTy/MacOS-Trackpad-MiddleClick.git)
+[![Homebrew](https://img.shields.io/badge/Homebrew-Install-green.svg)](https://formulae.brew.sh/formula/middleclick)
 
 ## Features
 
@@ -21,7 +22,25 @@ A macOS app that converts three-finger trackpad clicks to middle clicks, perfect
 
 ## Installation
 
-### Option 1: Build from Source (Recommended)
+### Option 1: Homebrew (Recommended)
+
+The easiest way to install MiddleClick is using Homebrew:
+
+```bash
+# Add the tap (if using a custom tap)
+brew tap WinkyTy/middleclick
+
+# Install MiddleClick
+brew install middleclick
+```
+
+**Note**: If you haven't set up a Homebrew tap yet, you can install directly from the repository:
+
+```bash
+brew install --build-from-source https://raw.githubusercontent.com/WinkyTy/MacOS-Trackpad-MiddleClick/main/Formula/middleclick.rb
+```
+
+### Option 2: Build from Source
 
 1. **Clone the repository:**
    ```bash
@@ -42,7 +61,7 @@ A macOS app that converts three-finger trackpad clicks to middle clicks, perfect
    - In Xcode, press `⌘+R` to run
    - Or run from command line: `open build/Release/MiddleClick.app`
 
-### Option 2: Using the Build Script
+### Option 3: Using the Build Script
 
 1. **Clone and build:**
    ```bash
@@ -52,7 +71,7 @@ A macOS app that converts three-finger trackpad clicks to middle clicks, perfect
    ./build.sh
    ```
 
-### Option 3: Manual Build
+### Option 4: Manual Build
 
 1. **Clone the repository:**
    ```bash
@@ -73,7 +92,7 @@ A macOS app that converts three-finger trackpad clicks to middle clicks, perfect
 ## First Run Setup
 
 ### 1. Launch the App
-After building, launch the MiddleClick app. You'll see a grid icon appear in your menu bar.
+After installation, launch the MiddleClick app. You'll see a grid icon appear in your menu bar.
 
 ### 2. Grant Accessibility Permissions
 When you first run the app, you'll be prompted to grant accessibility permissions:
@@ -178,6 +197,29 @@ The app appears as a grid icon in your menu bar:
    - Ensure you have admin privileges
    - Check that the project is in a writable location
 
+### Homebrew Installation Issues
+
+1. **Update Homebrew:**
+   ```bash
+   brew update
+   ```
+
+2. **Check Formula:**
+   ```bash
+   brew info middleclick
+   ```
+
+3. **Reinstall:**
+   ```bash
+   brew uninstall middleclick
+   brew install middleclick
+   ```
+
+4. **Install with Verbose Output:**
+   ```bash
+   brew install --build-from-source --verbose Formula/middleclick.rb
+   ```
+
 ## Development
 
 ### Project Structure
@@ -192,6 +234,11 @@ MiddleClick/
 │   └── Info.plist               # App configuration
 ├── MiddleClickTests/            # Unit tests
 ├── MiddleClickUITests/          # UI tests
+├── Formula/                     # Homebrew formula
+│   ├── middleclick.rb          # Homebrew formula
+│   └── README.md               # Formula documentation
+├── scripts/                     # Build and release scripts
+│   └── create-release.sh       # Release creation script
 ├── build.sh                     # Build script
 └── README.md                    # This file
 ```
@@ -214,6 +261,23 @@ MiddleClick/
    - Use Disk Utility to create a disk image
    - Drag the app to the disk image
    - Eject and distribute
+
+### Setting Up Homebrew Distribution
+
+1. **Create a Homebrew Tap:**
+   - Create a new repository named `homebrew-tap`
+   - Add the formula from `Formula/middleclick.rb`
+   - Users can install with: `brew tap yourusername/tap && brew install middleclick`
+
+2. **Submit to Homebrew Core:**
+   - Fork the homebrew-core repository
+   - Add your formula to `Formula/middleclick.rb`
+   - Submit a pull request
+
+3. **Create a Release:**
+   ```bash
+   ./scripts/create-release.sh 1.0.0 "Initial release"
+   ```
 
 ### Contributing
 
@@ -246,6 +310,7 @@ If you encounter any issues:
 - Menu bar interface
 - Accessibility permission handling
 - Background operation
+- Homebrew formula support
 
 ---
 
